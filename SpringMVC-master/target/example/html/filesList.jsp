@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: fours
-  Date: 07.04.2016
-  Time: 23:59
+  Date: 20.05.2016
+  Time: 2:23
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -17,13 +17,12 @@
     <title>SpringMVC</title>
 
 
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+
     <![endif]-->
 </head>
 <body>
@@ -56,7 +55,7 @@
                     <td>
                         <a href="/download.do/${file.pathToFile}">Click here to download file</a>
                     </td>
-                     <td>
+                    <td>
                         <a href="/fileShow/${file.id}" type="button" class="btn btn-sm btn-success">Show</a>
 
                     </td>

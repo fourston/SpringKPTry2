@@ -1,7 +1,10 @@
 package com.cenyol.example.controller;
 
+/**
+ * Created by fours on 20.05.2016.
+ */
 import com.cenyol.example.model.ThreadComments;
-import com.cenyol.example.repository.ThreadCommentsRepository;
+import com.cenyol.example.repositoryUser.ThreadCommentsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

@@ -1,5 +1,8 @@
 package com.cenyol.example.model;
 
+/**
+ * Created by fours on 20.05.2016.
+ */
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,17 +20,17 @@ public class ThreadComments implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int idUser;
+    private String userName;
     private int idThread;
     private int Rating;
     private String post;
 
-    public int getIdUser() {
-        return idUser;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public int getIdThread() {

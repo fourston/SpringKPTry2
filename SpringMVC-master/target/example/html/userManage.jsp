@@ -28,16 +28,16 @@
 </head>
 <body>
 <div class="container">
-  <h1>SpringMVC </h1>
+  <h1>SpringMVC 博客系统-用户管理</h1>
   <hr/>
 
-  <h3>www<a href="/addUser" type="button" class="btn btn-default btn-sm">1213</a></h3>
+  <h3>所有用户 <a href="/addUser" type="button" class="btn btn-default btn-sm">添加</a></h3>
 
   <!-- 如果用户列表为空 -->
   <c:if test="${empty userList}">
     <p class="bg-warning">
       <br/>
-      User<a href="/addUser" type="button" class="btn btn-default btn-sm">添加</a>
+      User表为空，请<a href="/addUser" type="button" class="btn btn-default btn-sm">添加</a>
       <br/>
       <br/>
     </p>
@@ -48,9 +48,9 @@
     <table class="table table-bordered table-striped">
       <tr>
         <th>ID</th>
-        <th>Name</th>
-        <th>Second name</th>
-        <th>КButtons</th>
+        <th>姓名</th>
+        <th>密码</th>
+        <th>操作</th>
       </tr>
 
       <c:forEach items="${userList}" var="user">
@@ -59,9 +59,9 @@
           <td>${user.firstName} ${user.lastName}</td>
           <td>${user.password}</td>
           <td>
-            <a href="/showUser/${user.id}" type="button" class="btn btn-sm btn-success">Show</a>
-            <a href="/updateUser/${user.id}" type="button" class="btn btn-sm btn-warning">Edit</a>
-            <a href="/deleteUser/${user.id}" type="button" class="btn btn-sm btn-danger">Delete</a>
+            <a href="/showUser/${user.id}" type="button" class="btn btn-sm btn-success">详情</a>
+            <a href="/updateUser/${user.id}" type="button" class="btn btn-sm btn-warning">修改</a>
+            <a href="/deleteUser/${user.id}" type="button" class="btn btn-sm btn-danger">删除</a>
           </td>
         </tr>
       </c:forEach>

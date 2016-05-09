@@ -16,8 +16,8 @@
 
     <title>SpringMVC</title>
 
-    <!-- 新 Bootstrap 核心 CSS 文件 -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -50,10 +50,11 @@
             <td>${file.pathToFile}</td>
         </tr>
     </table>
-    <form:form action="/addCommentPost" method="post" commandName="comment" role="form">
+    <form:form action="/addCommentPost/" method="post" commandName="comment" role="form">
         <div class="form-group">
             <label for="post">post</label>
-            <input type="text" class="form-control" id="post" name="firstName" placeholder="Enter post:"/>
+            <input type="text" class="form-control" id="post" name="post" placeholder="Enter post:"/>
+            <input type="text" class="form-control" id="name" name="userName" size="15" placeholder="Your Name:"/>
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-sm btn-success">Post this</button>

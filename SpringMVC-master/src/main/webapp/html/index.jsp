@@ -5,34 +5,80 @@
   Time: 17:02
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<html lang="zh-CN">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login Page</title>
+    <style>
+        .error {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            color: #a94442;
+            background-color: #f2dede;
+            border-color: #ebccd1;
+        }
 
-  <title>SpringMVC Demo </title>
+        .msg {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            color: #31708f;
+            background-color: #d9edf7;
+            border-color: #bce8f1;
+        }
 
-
-  <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-  <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-  <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-  <![endif]-->
+        #login-box {
+            width: 300px;
+            padding: 20px;
+            margin: 100px auto;
+            background: #fff;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border: 1px solid #000;
+        }
+    </style>
 </head>
-<body>
-<h1>SpringMVC Demo</h1>
-<div id="menu" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:spring="http://www.springframework.org/tags" xmlns:sec="http://www.springframework.org/security/tags" version="2.0"> <jsp:directive.page contentType="text/html;charset=UTF-8" /> <jsp:output omit-xml-declaration="yes" /> <spring:message code="menu_header_text" var="menuHeaderText"/> <spring:message code="menu_add_contact" var="menuAddContact"/> <spring:url value="/contacts?form" var="addContactUrl"/> <spring:message code="label_login" var="labelLogin"/> <spring:url var="loginUrl" value="/j spring_security_check" /> <h3>${menuHeaderText}</h3> <sec:authorize access="hasRole('ROLE_USER')"> <а href="${addContactUrl}"><h3>${menuAddContact}</h3></a> </sec:authorize> <sec:authorize access="isAnonymous()"> <div id="login"> <form name="loginForm" action="${loginUrl}" method="post"> <tаЫе> <caption align="left">Login:</caption> <tr> <td>User Name:</td> <td><input type="text" name="j_username"/></td> </tr> <tr> <td>Password:</td> <td><input type="password" name="j_password"/></td> </tr> <tr> <td colspan="2" align="center"><input name="submit" type="submit" value="Login"/> </td> </tr> </tаЫе> </form> </div> </sec:authorize> </div>
+<body onload='document.loginForm.username.focus();'>
 
-<a href="/filesList">СПИСОК ФАЙЛОВ</a>
-<br>
-<a href="/forum">Форум</a>
+<h1>=ЗАХОДИТЕ К НАМ=</h1>
 
-<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<div id="login-box">
 
+    <h2>Login with Username and Password</h2>
 
-<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <c:if test="${not empty error}">
+        <div class="error">${error}</div>
+    </c:if>
+    <c:if test="${not empty msg}">
+        <div class="msg">${msg}</div>
+    </c:if>
+
+    <form name='loginForm'
+          action="<c:url value='j_spring_security_check' />" method='POST'>
+
+        <table>
+            <tr>
+                <td>User:</td>
+                <td><input type='text' name='username' value=''></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type='password' name='password' /></td>
+            </tr>
+            <tr>
+                <td colspan='2'><input name="submit" type="submit"
+                                       value="submit" /></td>
+            </tr>
+        </table>
+
+        <input type="hidden" name="${_csrf.parameterName}"
+               value="${_csrf.token}" />
+
+    </form>
+</div>
+
 </body>
 </html>

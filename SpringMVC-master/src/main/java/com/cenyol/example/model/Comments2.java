@@ -1,12 +1,9 @@
 package com.cenyol.example.model;
 
 /**
- * Created by fours on 08.04.2016.
+ * Created by fours on 20.05.2016.
  */
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -16,31 +13,37 @@ public class Comments2 implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long userId;
-    private Long fileId;
+    private String userName;
     private String post;
     private int Rating;
     private Long commentId; //не вторичный ключ, потому что необязателен, используется только для
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn
+    private Files file;
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+
+    public Files getFile() {
+        return file;
     }
 
-    //комментариев, которые являются ответом на комментарии
+    public void setFile(Files file) {
+        this.file = file;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+//комментариев, которые являются ответом на комментарии
     //как их огрнаничивать и выводить деревом???
 
-    public Long getUserId() {
-        return userId;
-    }
 
 
-    public Long getFileId() {
-        return fileId;
-    }
 
-    public void setFileId(Long fileId) {
-        this.fileId = fileId;
-    }
 
     public String getPost() {
         return post;

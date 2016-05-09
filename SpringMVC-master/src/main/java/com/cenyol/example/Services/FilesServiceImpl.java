@@ -1,9 +1,8 @@
 package com.cenyol.example.Services;
 
 /**
- * Created by fours on 07.04.2016.
+ * Created by fours on 20.05.2016.
  */
-
 import com.cenyol.example.model.Files;
 import com.cenyol.example.repository.FilesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +15,18 @@ import java.util.List;
 @Configuration
 public class FilesServiceImpl implements FilesService{
 
+
     @Autowired
     private FilesRepository filesRepository;
 
 
-    public Files addFile(Files file){
+    public Files addFile(String path, String name, String size, String ext){
+        Files file = new Files();
+        file.setName(name);
+        file.setExt(ext);
+        file.setPathToFile(path);
+        file.setSizeOfFile(size);
+        file.setStatus("check");
         Files savedFile = filesRepository.saveAndFlush(file);
         return savedFile;
     }
@@ -42,13 +48,13 @@ public class FilesServiceImpl implements FilesService{
     }
 
 
-    public List<Files> getFilesById(long id){
-        return filesRepository.getFilesById(id);
+    public List<Files> getFilesById(String name){
+        return filesRepository.getFilesById(name);
     }
 
 
-    public List<Files> getRequestById(long id){
-        return filesRepository.getRequestsById(id);
+    public List<Files> getRequestById(String name){
+        return filesRepository.getRequestsById(name);
     }
 
 }

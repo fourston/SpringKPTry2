@@ -1,7 +1,12 @@
 package com.cenyol.example.controller;
 
+/**
+ * Created by fours on 20.05.2016.
+ */
+
 import com.cenyol.example.Services.CommentsService;
 import com.cenyol.example.model.Comments2;
+import com.cenyol.example.model.Files;
 import com.cenyol.example.repository.CommentsRepository;
 import com.cenyol.example.repository.FilesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +36,7 @@ public class CommentsController {
 
     @RequestMapping(value = "commentsByFile/{fileId}", method = RequestMethod.GET)
     public String commentsByFile(@PathVariable("fileId") Long fileId, ModelMap modelMap) {
+        Files files = filesRepository.findOne(fileId);
         List<Comments2> commentsByFile = commentsRepository.getCommentsByFile(fileId);
         modelMap.addAttribute("commentsByFile", commentsByFile);
         return "commentsByFile";
@@ -44,8 +50,9 @@ public class CommentsController {
 
     @RequestMapping(value = "/addCommentPost", method = RequestMethod.POST)
     public String addCommentPost(@ModelAttribute("comment") Comments2 comments){
-        commentsService.addComment(comments);
-        return "redirect:/fileDetails";
+        Files files = filesRepository.findOne(Long.valueOf(1));
+        commentsService.addComment(comments, files);
+        return "redirect:/fileShow/" + files.getId();
     }
 
 

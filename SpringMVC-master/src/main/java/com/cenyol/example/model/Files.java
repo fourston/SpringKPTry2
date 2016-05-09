@@ -1,13 +1,12 @@
 package com.cenyol.example.model;
 
 /**
- * Created by fours on 07.04.2016.
+ * Created by fours on 20.05.2016.
  */
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 public class Files implements Serializable {
@@ -21,7 +20,18 @@ public class Files implements Serializable {
     private String sizeOfFile;
     private String pathToFile;
     private String status;
-    private int userId;
+    private String userName;
+    @OneToMany
+    private List<Comments2> comments;
+
+    public List<Comments2> getComments() {
+        return comments;
+    }
+
+
+    public void setComments(List<Comments2> comments) {
+        this.comments = comments;
+    }
 
     public String getName() {
         return name;
@@ -63,12 +73,12 @@ public class Files implements Serializable {
         this.status = status;
     }
 
-    public int getUserId() {
-        return userId;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public Long getId() {

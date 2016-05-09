@@ -13,7 +13,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-  <title>SpringMVC</title>
+  <title>SpringMVC 用户详情</title>
 
   <!-- 新 Bootstrap 核心 CSS 文件 -->
   <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -27,7 +27,7 @@
 </head>
 <body>
 <div class="container">
-  <h1>SpringMVC</h1>
+  <h1>SpringMVC 用户详情</h1>
   <hr/>
 
   <table class="table tavble-bordered table-striped">
